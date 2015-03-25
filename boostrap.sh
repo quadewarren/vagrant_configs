@@ -30,10 +30,10 @@ ufw allow 9695
 ufw allow 465
 ufw enable
 
-cp /home/vagrant/sshd_config  /etc/ssh/sshd_config
+cp /vagrant/sshd_config  /etc/ssh/sshd_config
 /etc/init.d/ssh restart
 
-cp /home/vagrant/fstab /etc/fstab
+cp /vagrant/fstab /etc/fstab
 
 useradd csuser
 adduser csuser sudo
@@ -41,8 +41,8 @@ adduser csuser sudo
 usermod -a -G admin csuser
 dpkg-statoverride --update --add root admin 4750 /bin/su
 
-cp /home/vagrant/sysctl.conf /etc/sysctl.conf
-cp /home/vagrant/jail.conf /etc/fail2ban/jail.conf
+cp /vagrant/sysctl.conf /etc/sysctl.conf
+cp /vagrant/jail.conf /etc/fail2ban/jail.conf
 
 /etc/init.d/fail2ban restart
 
