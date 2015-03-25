@@ -7,6 +7,8 @@ DBNAME=whiteboard
 DBUSER=whiteboard_user
 DBPASSWD='3PzJWhL^$ph2Xovd9Q$L2aN'
 
+sleep 30
+
 apt-get update
 apt-get -y upgrade
 
