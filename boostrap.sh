@@ -8,15 +8,18 @@ DBUSER=whiteboard_user
 DBPASSWD='3PzJWhL^$ph2Xovd9Q$L2aN'
 
 apt-get update
-apt-get upgrade
+apt-get -y upgrade
 
 echo -e "\n--- Install MySQL specific packages and settings ---\n"
 echo "mysql-server mysql-server/root_password password $DBPASSWD" | debconf-set-selections
 echo "mysql-server mysql-server/root_password_again password $DBPASSWD" | debconf-set-selections 
 
 apt-get -y install mysql-server-5.6 > /dev/null 2>&1
-apt-get install tomcat7
-apt-get install fail2ban
+apt-get -y install tomcat7
+cp /vagrant/server.xml /etc/tomcat7/server.xml
+cp /vagrant/tomcat-users.xml /etc/tomcat7/tomcat-users.xml
+service tomcat7 restart
+apt-get -y install fail2ban
 
 ufw allow 22
 ufw allow 443
