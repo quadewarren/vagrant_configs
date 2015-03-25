@@ -40,12 +40,6 @@ cp /vagrant/sshd_config  /etc/ssh/sshd_config
 
 cp /vagrant/fstab /etc/fstab
 
-useradd csuser
-adduser csuser sudo
-
-usermod -a -G admin csuser
-dpkg-statoverride --update --add root admin 4750 /bin/su
-
 cp /vagrant/sysctl.conf /etc/sysctl.conf
 cp /vagrant/jail.conf /etc/fail2ban/jail.conf
 
@@ -61,3 +55,5 @@ dd if=/dev/zero of=/EMPTY bs=1M
 rm -f /EMPTY
 
 cat /dev/null > ~/.bash_history && history -c
+
+mkdir /home/vagrant/deploy/
