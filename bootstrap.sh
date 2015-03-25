@@ -20,20 +20,10 @@ apt-get -y install mysql-server-5.6 > /dev/null 2>&1
 apt-get -y install tomcat7
 cp /vagrant/server.xml /etc/tomcat7/server.xml
 cp /vagrant/tomcat-users.xml /etc/tomcat7/tomcat-users.xml
+cp /vagrant/setenv.sh /usr/share/tomcat7/setenv.sh
+chmod +x /usr/share/tomcat7/setenv.sh
 service tomcat7 restart
 apt-get -y install fail2ban
-
-ufw allow 22
-ufw allow 443
-ufw allow 8080
-ufw allow 8443
-ufw allow 80
-ufw allow 3306
-ufw allow 8005
-ufw allow 9696
-ufw allow 9695
-ufw allow 465
-ufw enable
 
 cp /vagrant/sshd_config  /etc/ssh/sshd_config
 /etc/init.d/ssh restart
