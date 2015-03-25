@@ -48,4 +48,11 @@ cp /home/vagrant/jail.conf /etc/fail2ban/jail.conf
 
 mysql -uroot -p$DBPASSWD -e "CREATE DATABASE $DBNAME"
 mysql -uroot -p$DBPASSWD -e "grant all privileges on $DBNAME.* to '$DBUSER'@'localhost' identified by '$DBPASSWD'"
-  
+mysql -uroot -p$DBPASSWD -e "grant all privileges on $DBNAME.* to '$DBUSER'@'%' identified by '$DBPASSWD'"
+
+apt-get clean
+
+dd if=/dev/zero of=/EMPTY bs=1M
+rm -f /EMPTY
+
+cat /dev/null > ~/.bash_history && history -c
