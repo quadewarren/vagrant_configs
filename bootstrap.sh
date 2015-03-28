@@ -23,7 +23,12 @@ cp /vagrant/tomcat-users.xml /etc/tomcat7/tomcat-users.xml
 cp /vagrant/setenv.sh /usr/share/tomcat7/bin/setenv.sh
 cp /vagrant/catalina-jmx-remote.jar /usr/share/tomcat7/lib/
 chmod +x /usr/share/tomcat7/bin/setenv.sh
+apt-get -y install tomcat7-docs
+apt-get -y install tomcat7-admin
+apt-get -y install tomcat7-examples
+apt-get -y install default-jdk
 service tomcat7 restart
+
 apt-get -y install fail2ban
 
 cp /vagrant/sshd_config  /etc/ssh/sshd_config
