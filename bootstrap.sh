@@ -20,7 +20,7 @@ apt-get -y install mysql-server-5.6 > /dev/null 2>&1
 apt-get -y install tomcat7
 cp /vagrant/server.xml /etc/tomcat7/server.xml
 cp /vagrant/tomcat-users.xml /etc/tomcat7/tomcat-users.xml
-cp /vagrant/setenv.sh /usr/share/tomcat7/setenv.sh
+cp /vagrant/setenv.sh /usr/share/tomcat7/bin/setenv.sh
 chmod +x /usr/share/tomcat7/setenv.sh
 service tomcat7 restart
 apt-get -y install fail2ban
