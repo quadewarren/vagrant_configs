@@ -29,17 +29,17 @@ apt-get -y install tomcat7-examples
 apt-get -y install default-jdk
 service tomcat7 restart
 
-apt-get -y install fail2ban
+#apt-get -y install fail2ban
 
-cp /vagrant/sshd_config  /etc/ssh/sshd_config
-/etc/init.d/ssh restart
+#cp /vagrant/sshd_config  /etc/ssh/sshd_config
+#/etc/init.d/ssh restart
 
-cp /vagrant/fstab /etc/fstab
+#cp /vagrant/fstab /etc/fstab
 
-cp /vagrant/sysctl.conf /etc/sysctl.conf
-cp /vagrant/jail.conf /etc/fail2ban/jail.conf
+#cp /vagrant/sysctl.conf /etc/sysctl.conf
+#cp /vagrant/jail.conf /etc/fail2ban/jail.conf
 
-/etc/init.d/fail2ban restart
+#/etc/init.d/fail2ban restart
 
 mysql -uroot -p$DBPASSWD -e "CREATE DATABASE $DBNAME"
 mysql -uroot -p$DBPASSWD -e "grant all privileges on $DBNAME.* to '$DBUSER'@'localhost' identified by '$DBPASSWD'"
