@@ -17,6 +17,8 @@ echo "mysql-server mysql-server/root_password password $DBPASSWD" | debconf-set-
 echo "mysql-server mysql-server/root_password_again password $DBPASSWD" | debconf-set-selections 
 
 apt-get -y install mysql-server-5.6 > /dev/null 2>&1
+sed -i s/127\.0\.0\.1/0\.0\.0\.0/g /etc/mysql/my.cnf
+service mysql restart
 apt-get -y install tomcat7
 cp /vagrant/server.xml /etc/tomcat7/server.xml
 cp /vagrant/tomcat-users.xml /etc/tomcat7/tomcat-users.xml
@@ -44,6 +46,7 @@ service tomcat7 restart
 mysql -uroot -p$DBPASSWD -e "CREATE DATABASE $DBNAME"
 mysql -uroot -p$DBPASSWD -e "grant all privileges on $DBNAME.* to '$DBUSER'@'localhost' identified by '$DBPASSWD'"
 mysql -uroot -p$DBPASSWD -e "grant all privileges on $DBNAME.* to '$DBUSER'@'%' identified by '$DBPASSWD'"
+mysql -uroot -p$DBPASSWD whiteboard < /vagrant/whiteboard.sql 
 
 apt-get clean
 

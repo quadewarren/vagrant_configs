@@ -14,6 +14,7 @@ Vagrant.configure(2) do |config|
   # boxes at https://atlas.hashicorp.com/search.
   config.vm.box = "ubuntu/trusty64"
 #  config.ssh.port = 443
+  config.ssh.host=192.168.33.10
 
   # Disable automatic box update checking. If you disable this, then
   # boxes will only be checked for updates when the user runs
